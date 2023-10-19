@@ -57,7 +57,7 @@ LETTERS
 # 2
 # a
 
-  city <- c
+  city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
   city
 
 # b
