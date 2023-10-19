@@ -4,7 +4,6 @@ author: "Nicole De Luna"
 date: "2023-10-04"
 output: pdf_document
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -23,31 +22,146 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+ ``` {r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-#1 There is a built-in vector LETTERS contains the uppercase letters of the alphabet and letters which contains the lowercase letters of the alphabet
+```{r name, echo = TRUE}
 
-  LETTERS
+LETTERS
+# 1
+# LETTERS vector
+# a.
+  first11 <- LETTERS[c(1:11)]
+  first11
+
+# b.
+  lenLet <- length(LETTERS)
+  oddNum <- LETTERS[seq(lenLet) %% 2 == 1]
+  oddNum
+  
+# c
+  vowels <- LETTERS[c(1,5,9,15,21)]
+  vowels
+
+#letters vector
+# d
   letters
 
-#1a vector that contains the first 11 letters
-  letters_11 <- head(letters,11)
-  letters_11
-#1b vector that contains the odd numbered letters
-  AllLetters <- LETTERS
-  letters_odd <-AllLetters[seq(1, length(AllLetters), by=2)]
-  letters_odd
+  last5 <- letters[c(22:26)]
+  last5
 
-#1c Produce a vector that contains the vowels
-  letters_vowel <- [c(1,5,9,15,21)] 
-  letters_vowel
-#1d Produce a vector that contains the last 5 lowercase letters
-  letters_5 <- letters[22:26]
-  letters_5
+# e
+  fifto24 <- letters[c(15:24)]
+  fifto24
 
+# 2
+# a
+
+  city <- c
+  city
+
+# b
+  temp <- c(42, 39, 34, 34, 30, 27)
+  temp
+
+# c
+  city_temp <- data.frame(city,temp)
+
+  city_temp
+
+
+# d
+  names(city_temp) <- c("City", "Temperature")
+  city_temp
+
+# e
+
+  str(city_temp)
+  
+# the code displayed the structure of the city_temp object
+# it displayed the contents of the data frame
+# it displayed the summary of the data frame
+
+# f
+  
+  twoRows <- city_temp[3:4,]
+
+# g
+
+  highest <- city_temp[which.max(city_temp$Temperature),]
+  highest
+
+
+  lowest <- city_temp[which.min(city_temp$Temperature),]
+  lowest
+
+
+# USING MATRICES
+
+# 2 a
+
+  matr <- matrix(c(1:8,11:14), nrow = 3, ncol = 4)
+  matr
+
+# b
+
+  mulMatr <- matr * 2
+  mulMatr
+
+# c
+
+ rowTwooo <- mulMatr[2,]
+  rowTwooo
+
+# d
+
+  twoColsAndRows <- mulMatr[c(1,2),c(3,4)]
+  twoColsAndRows
+
+# e 
+
+  twoColsOneRow <- mulMatr[3,c(2,3)]
+  twoColsOneRow
+
+# f
+
+  fourCol <- mulMatr[,4]
+  fourCol
+
+# g 
+  dimnames(mulMatr) <- list(c("hana", "dhul", "set"), c("isa", "duha", "tatlo", "apat"))
+
+  mulMatr
+
+# h
+
+  matr
+  dim(matr) <- c(6,2)
+  matr
+
+
+# ARRAYS
+
+# 3 a 
+
+
+  values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+  rep_values <- rep(values, each = 2)
+
+  arr <- array(rep_values, dim = c(2,4,3))
+  arr
+
+# 3 b 
+# three dimensions
+
+# 3 c
+  dimnames(arr) <- list(
+  letters[1:2], # row names
+  LETTERS[1:4], # col names
+  c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array") # dim names
+)
+
+  arr
 
 
 
