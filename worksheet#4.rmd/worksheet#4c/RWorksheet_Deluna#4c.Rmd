@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(readr)
 mpg <- read_csv("mpg.csv")
+
 View(mpg)
 ```
 
@@ -31,16 +32,28 @@ print(conti)
 ```
 
 
-2. Which manufacturer has the most models in this data set? Which model has the most variations?
-Show your answer.
+#2. Which manufacturer has the most models in this data set? Which model has the most variations? Show your answer.
 ```{r}
+  model <- mpg %>%
+  group_by(manufacturer) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+print(model)
+
+#Dodge is the manufacturer with the most models.
+count <- mpg %>%
+  group_by(model) %>%
+  summarise(variation = n()) %>%
+  arrange(desc(variation))
+
+print(count)
+#Caravan 2wd is the model with the most variation.
+```
 
 
-``` 
 
-
-
-2 a. Group the manufacturers and find the unique models. Show your codes and result.
+2 a
 ```{r}
 model <- unique(mpg[, c("manufacturer", "model")])
 count <- table(model$manufacturer) 
@@ -48,20 +61,17 @@ print(count)
 ```
 
 
-2 b. Graph the result by using plot() and ggplot(). Write the codes and its result.
+2 b
 ```{r}
-
-print(paste("Manufacturer with the most models:", model))
-
-barplot(count, main = "Number of Models by Manufacturer",
-        xlab = "Manufacturer", ylab = "Number of Models",
-        col = "pink", 
-        las = 2)
-
-ggplot(data = data.frame(manufacturer = names(count)),
-count = as.numeric(count))
-x = "Manufacturer"
-y = "Number of Models"
+ggplot(mpg, aes(x = model, y = manufacturer, color = class)) +
+  geom_point() +
+  labs(title = "Car models and manufacturers",
+       x = "Car model",
+       y = "Manufacturer",
+       color = "Vehicle class",
+       caption = "Source: Your Data Source") +
+  theme_minimal() +
+  theme(legend.position = "right")
 
 ```
 
@@ -69,6 +79,6 @@ y = "Number of Models"
 2. Same dataset will be used. You are going to show the relationship of the model and the manufacturer
 
 ```{r}
-correlation[model$manufacturer] 
+
 
 ```
